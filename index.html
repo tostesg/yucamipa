@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+     <title> Yucamipa </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+    <body>
+    <div class="cabeca">
+        <img class="logoyucamipa" src="imagens/logoyucamipa.png" alt="Logo YUCAMIPA">
+        <div class="titulo-yucamipa">
+        <h1>YUCAMIPA</h1>
+        <h4>Conectando você ao futuro do trabalho</h4>   
+         <hr>
+    </div>
+    </div>
+
+        <div class="login-lateral">
+        <h2>Login</h2>
+        <input type="text" placeholder="Usuário">
+        <input type="password" placeholder="Senha">
+        <button onclick="abrirModal('loginModal')">Entrar</button>
+        <a href="#" class="link-senha">Esqueceu sua senha?</a>
+        </div>
+
+        <div id="loginModal" class="modal">
+        <div class="modal-content">
+        <span class="close" onclick="fecharModal('loginModal')">&times;</span>
+        <h2>Faça Login</h2>
+        <p>Você é:</p>
+        <button class="botao" onclick="irPara('gestor.html')">Gestor / Supervisor</button>
+        <p></p>
+        <button class="botao" onclick="irPara('funcionario.html')">Funcionário</button>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <div class="topo">
+       </div>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('loginModal')">&times;</span>
+            <h2>Faça Login</h2>
+            <p>Você é:</p>
+            <button class="botao" onclick="irPara('admin.html')">Administrador</button>
+            <P></P>
+            <button class="botao" onclick="irPara('funcionario.html')">Funcionário</button>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('registerModal')">&times;</span>
+            <h2>Registrar</h2>
+            <form>
+            <input type="text" placeholder="Nome completo" required>
+            <input type="email" placeholder="Email" required>
+            <input type="text" placeholder="N° celular" required>
+            <input type="text" placeholder="CPF" required>
+            <input type="text" placeholder="Matrícula" required>
+            <input type="password" placeholder="Senha" required>
+            <input type="password" placeholder="Confirmar Senha"required>
+         <button class="botao">Registrar</button>
+         </form>
+       </div>
+    </div>
+
+        <div class="slideshow">
+          <img src="imagens/fundo1.png" class="slide active">
+          <img src="imagens/fundo2.png" class="slide">
+          <img src="imagens/fundo3.png" class="slide">
+        </div>
+        </div>
+   
+
+    <script src="script.js"></script>
+    </body>
+</html>
