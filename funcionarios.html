@@ -1,0 +1,2974 @@
+<!DOCTYPE html>
+<html>
+<head>
+<html lang="PT-BR">
+<meta charset="UTF-8">
+<title>Funcionário</title>
+<link rel="stylesheet" href="stylefun.css">
+</head>                   
+    
+<body>               
+    <div class="cabecalho">
+            <div class="logo-area">
+            <img class="logo" src="imagens/logoyucamipa.png" alt="Logo YUCAMIPA">
+        <h1>YUCAMIPA</h1>
+    </div>
+        <div class="perfil-container">
+    <div class="botoes-perfil-header">
+        <button class="botao" onclick="togglePerfilDropdown()">
+            <img class="perfil" src="imagens/fotoperfil.png" alt="Perfil">Perfil
+        </button>
+        <button class="botao icone" onclick="abrirWhatsappBot()" title="Enviar alerta de atraso">
+            🔔
+        </button>
+    </div>
+
+            
+            
+
+
+            <div id="perfilDropdown" class="perfil-dropdown">
+                <div class="perfil-info">
+                    <p class="cargo-titulo">Gestor</p>
+                    <p><strong>Gestor:</strong> Silvana Lyrio</p>
+                    <p><strong>Matrícula:</strong> 010203</p>
+                    <p><strong>Cargo:</strong> Gestor de qualidade</p>
+                    <button class="btn-sair" onclick="sair()">Sair</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sidebar">
+        <h2>Dashboard Gestor</h2>
+        <a href="#" onclick="mostrarTela('onthejob')">📍ON THE JOB</a>
+        <a href="#" onclick="mostrarTela('treinamentos-funcionario')">📊Avaliação dos Funcionários</a>
+        <a href="#" onclick="mostrarTela('documentos')">📝Documentação</a>
+        <div class="sidebar-inferior">
+    <a href="#" onclick="abrirModalAdicionarFuncionario()">➕ Adicionar Funcionário</a>
+    <a href="#" onclick="abrirModalSuporte()">🎧 Suporte</a>
+    </div>
+    </div>
+
+    <!-- Modal de Suporte -->
+    <div id="modalSuporte" class="modal">
+        <div class="modal-conteudo">
+            <span class="modal-fechar" onclick="fecharModalSuporte()">&times;</span>
+            <h2>Formulário de Suporte</h2>
+            <div class="form-suporte">
+                <div class="form-group">
+                    <label for="funcionario">Funcionário:</label>
+                    <input type="text" id="funcionario" name="funcionario">
+                </div>
+                <div class="form-group">
+                    <label for="matricula">Matrícula:</label>
+                    <input type="text" id="matricula" name="matricula">
+                </div>
+                <div class="form-group">
+                    <label for="email">Seu e-mail:</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="reclamacao">Reclamação:</label>
+                    <textarea id="reclamacao" name="reclamacao" rows="4"></textarea>
+                </div>
+                <button onclick="submeterSuporte()" class="btn-submeter">Submeter</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="conteudo">
+
+        <div id="onthejob" class="subconteudo" style="display:block">
+        
+<div class="linha-perfis">
+  <div class="caixa-perfil">
+    <h2>Perfil do Funcionário</h2>
+    <p><strong>Nome:</strong>Funcionário 1</p>
+    <p><strong>Matrícula:</strong>123456</p>
+    <p><strong>Cargo:</strong>Supervisor de qualidade fabril</p>
+    <p><strong>Setor:</strong>Controle de qualidade</p>
+    <p><strong>Tempo de empresa:</strong>3 meses</p>
+
+    <div class="botoes-perfil">
+      <button onclick="mostrarSubAbaPerfil('conteudo-mirelly-treinamentos')">Treinamentos</button>
+    </div>
+
+    <div id="conteudo-mirelly-treinamentos" class="subconteudo-perfil"><p>
+<details>
+    <summary><strong>Integração ao Setor e à Cultura da Empresa</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado1" value="realizado1">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado2" value="realizado2">Compreendeu a missão, visão e valores da empresa<br>
+    <input type="radio" id="realizado3" value="realizado3">Reconheceu a estrutura e o funcionamento do setor<br>
+    <input type="radio" id="realizado4" value="realizado4">Demonstrou interesse em se integrar à equipe<br>
+    <input type="radio" id="realizado5" value="realizado5">Conhece os canais de comunicação internos<br>
+    <input type="radio" id="realizado6" value="realizado6">Entendeu o papel do setor de Qualidade na empresa<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura1" width="400" height="150"></canvas>
+    <button id="limpar-assinatura1">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura2" width="400" height="150"></canvas>
+    <button id="limpar-assinatura2">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Boas Práticas de Fabricação(BPF)</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado2" value="realizado2">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado7" value="realizado7">Conhece os fundamentos de BPF<br>
+    <input type="radio" id="realizado8" value="realizado8">Aplicou corretamente a higiene pessoal<br>
+    <input type="radio" id="realizado9" value="realizado9">Demonstrou boas práticas no ambiente de produção<br>
+    <input type="radio" id="realizado10" value="realizado10">Reconheceu situações de risco de contaminação<br>
+    <input type="radio" id="realizado11" value="realizado11">Seguiu rotinas de limpeza e sanitização<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura3" width="400" height="150"></canvas>
+    <button id="limpar-assinatura3">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura4" width="400" height="150"></canvas>
+    <button id="limpar-assinatura4">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Segurança no Ambiente de Produção</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado3" value="realizado3">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado12" value="realizado12">Identificou os principais riscos no setor<br>
+    <input type="radio" id="realizado13" value="realizado13">Utilizou EPIs corretamente durante a atividade<br>
+    <input type="radio" id="realizado14" value="realizado14">Seguiu os procedimentos de segurança<br>
+    <input type="radio" id="realizado15" value="realizado15">Reportou situações de risco ao responsável<br>
+    <input type="radio" id="realizado16" value="realizado16">Compreendeu o protocolo de acidentes<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura5" width="400" height="150"></canvas>
+    <button id="limpar-assinatura5">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura6" width="400" height="150"></canvas>
+    <button id="limpar-assinatura6">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Uso de EPIs</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado4" value="realizado4">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado17" value="realizado17">Selecionou EPIs adequados à atividade<br>
+    <input type="radio" id="realizado18" value="realizado18">Higienizou e armazenou corretamente os EPIs<br>
+    <input type="radio" id="realizado19" value="realizado19">Usou os EPIs durante toda a atividade<br>
+    <input type="radio" id="realizado20" value="realizado20">Reconheceu a importância do uso contínuo<br>
+    <input type="radio" id="realizado21" value="realizado21">Identificou EPIs danificados e reportou<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura7" width="400" height="150"></canvas>
+    <button id="limpar-assinatura7">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura8" width="400" height="150"></canvas>
+    <button id="limpar-assinatura8">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Conhecimento dos Produtos e Fluxo de produção</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado5" value="realizado5">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado27" value="realizado27">Reconheceu as etapas do processo produtivo<br>
+    <input type="radio" id="realizado28" value="realizado28">Identificou as matérias-primas e produtos finais<br>
+    <input type="radio" id="realizado29" value="realizado29">Compreendeu os pontos críticos do processo<br>
+    <input type="radio" id="realizado30" value="realizado30">Observou o fluxo de produto e informações<br>
+    <input type="radio" id="realizado31" value="realizado31">Relacionou o controle de qualidade ao processo<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura9" width="400" height="150"></canvas>
+    <button id="limpar-assinatura9">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura10" width="400" height="150"></canvas>
+    <button id="limpar-assinatura10">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Introdução aos Registros de Qualidade</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado6" value="realizado6">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado32" value="realizado32">Compreendeu os tipos de registros utilizados<br>
+    <input type="radio" id="realizado33" value="realizado33">Preencheu corretamente os formulários<br>
+    <input type="radio" id="realizado34" value="realizado34">Identificou erros e rasuras corretamente<br>
+    <input type="radio" id="realizado35" value="realizado35">Armazenou os registros conforme padrão<br>
+    <input type="radio" id="realizado36" value="realizado36">Entendeu a importância da rastreabilidade<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas class="assinatura11" width="400" height="150"></canvas>
+    <button class="limpar-assinatura11">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura12" width="400" height="150"></canvas>
+    <button id="limpar-assinatura12">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Controle de Qualidade no Recebimento de Matéria-prima</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado7" value="realizado7">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado37" value="realizado37">Verificou documentação de fornecedores<br>
+    <input type="radio" id="realizado38" value="realizado38">Realizou inspeção visual de matérias-primas<br>
+    <input type="radio" id="realizado39" value="realizado39">Identificou não conformidades de recebimento<br>
+    <input type="radio" id="realizado40" value="realizado40">Aplicou critérios de aceitação e rejeição<br>
+    <input type="radio" id="realizado41" value="realizado41">Preencheu registro de recebimento com precisão<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura13" width="400" height="150"></canvas>
+    <button id="limpar-assinatura13">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura14" width="400" height="150"></canvas>
+    <button id="limpar-assinatura14">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Coleta de Amostras e Envio ao Laboratório</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado8" value="realizado8">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado42" value="realizado42">Seguiu instruções de coleta corretamente<br>
+    <input type="radio" id="realizado43" value="realizado43">Usou recipientes e etiquetas apropriados<br>
+    <input type="radio" id="realizado44" value="realizado44">Evitou contaminação durante a coleta<br>
+    <input type="radio" id="realizado45" value="realizado45">Registrou dados de envio corretamente<br>
+    <input type="radio" id="realizado46" value="realizado46">Entendeu o impacto da amostragem no resultado<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas class="assinatura15" width="400" height="150"></canvas>
+    <button class="limpar-assinatura15">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura16" width="400" height="150"></canvas>
+    <button id="limpar-assinatura16">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Acompanhamento de Processos Críticos(pH, temperatura, etc)</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado9" value="realizado9">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado47" value="realizado47">Realizou medições conforme padrão<br>
+    <input type="radio" id="realizado48" value="realizado48">Utilizou instrumentos corretamente<br>
+    <input type="radio" id="realizado49" value="realizado49">Registrou os dados sem falhas<br>
+    <input type="radio" id="realizado50" value="realizado50">Entendeu os limites críticos de controle<br>
+    <input type="radio" id="realizado51" value="realizado51">Comunicou desvios de forma adequada<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura17" width="400" height="150"></canvas>
+    <button id="limpar-assinatura17">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura18" width="400" height="150"></canvas>
+    <button id="limpar-assinatura18">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Verificação de Procedimentos Operacionais Padrão(POPs)</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado10" value="realizado10">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado57" value="realizado57">Seguiu o POP designado passo a passo<br>
+    <input type="radio" id="realizado58" value="realizado58">Comparou prática com procedimento descrito<br>
+    <input type="radio" id="realizado59" value="realizado59">Relatou diferenças ou inconsistências<br>
+    <input type="radio" id="realizado60" value="realizado60">Demonstrou entendimento dos objetivos do POP<br>
+    <input type="radio" id="realizado61" value="realizado61">Preencheu checklists ou relatórios corretamente<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura19" width="400" height="150"></canvas>
+    <button id="limpar-assinatura19">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura20" width="400" height="150"></canvas>
+    <button id="limpar-assinatura20">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Preenchimento de Registros e Planilhas de controle</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado11" value="realizado11">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado62" value="realizado62">Preencheu sem rasuras e com clareza<br>
+    <input type="radio" id="realizado63" value="realizado63">Usou letra legível e dados precisos<br>
+    <input type="radio" id="realizado64" value="realizado64">Atualizou planilhas conforme frequência definida<br>
+    <input type="radio" id="realizado65" value="realizado65">Identificou informações obrigatórias<br>
+    <input type="radio" id="realizado66" value="realizado66">Seguiu instruções de preenchimento corretamente<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura21" width="400" height="150"></canvas>
+    <button id="limpar-assinatura21">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura22" width="400" height="150"></canvas>
+    <button id="limpar-assinatura22">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Conceito de Rastreabilidade</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado12" value="realizado12">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado67" value="realizado67">Entendeu o conceito de rastreabilidade<br>
+    <input type="radio" id="realizado68" value="realizado68">Identificou o lote e origem dos produtos<br>
+    <input type="radio" id="realizado69" value="realizado69">Relacionou registror de diferentes etapas<br>
+    <input type="radio" id="realizado70" value="realizado70">Preencheu etiquetas e fichas corretamente<br>
+    <input type="radio" id="realizado71" value="realizado71">Compreendeu a importância em caso de recall<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura23" width="400" height="150"></canvas>
+    <button id="limpar-assinatura23">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura24" width="400" height="150"></canvas>
+    <button id="limpar-assinatura24">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Identificação de Não-Conformidades</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado13" value="realizado13">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado72" value="realizado72">Reconheceu desvios de padrões de qualidade<br>
+    <input type="radio" id="realizado73" value="realizado73">Classificou a gravidade da não-conformidade<br>
+    <input type="radio" id="realizado74" value="realizado74">Preencheu relatório corretamente<br>
+    <input type="radio" id="realizado75" value="realizado75">Comunicou a liderança imediatamente<br>
+    <input type="radio" id="realizado76" value="realizado76">Entendeu o impacto da não conformidade<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura25" width="400" height="150"></canvas>
+    <button id="limpar-assinatura25">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura26" width="400" height="150"></canvas>
+    <button id="limpar-assinatura26">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Abertura de Relatório de Não-Conformidade(RNC)</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado14" value="realizado14">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado77" value="realizado77">Identificou o problema com clareza<br>
+    <input type="radio" id="realizado78" value="realizado78">Usou linguagem objetiva e técnica<br>
+    <input type="radio" id="realizado79" value="realizado79">Relacionou registros e evidências<br>
+    <input type="radio" id="realizado80" value="realizado80">Encaminhou ao setor correto<br>
+    <input type="radio" id="realizado81" value="realizado81">Entendeu o fluxo de tratativa de RNC<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura27" width="400" height="150"></canvas>
+    <button id="limpar-assinatura27">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura28" width="400" height="150"></canvas>
+    <button id="limpar-assinatura28">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Plano de Ação Corretiva e Preventiva(CAPA)</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado15" value="realizado15">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado82" value="realizado82">Identificou causa raiz do problema<br>
+    <input type="radio" id="realizado83" value="realizado83">Contribuiu com proposta de ação<br>
+    <input type="radio" id="realizado84" value="realizado84">Entendeu o papel do CAPA no SCQ<br>
+    <input type="radio" id="realizado85" value="realizado85">Acompanhou a implementação das ações<br>
+    <input type="radio" id="realizado86" value="realizado86">Registrou o andamento do plano<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura29" width="400" height="150"></canvas>
+    <button id="limpar-assinatura29">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura30" width="400" height="150"></canvas>
+    <button id="limpar-assinatura30">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Auditorias Internas(simulações)</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado16" value="realizado16">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado87" value="realizado87">Participou da auditoria simulada<br>
+    <input type="radio" id="realizado88" value="realizado88">Seguiu roteiro ou checklist de auditoria<br>
+    <input type="radio" id="realizado89" value="realizado89">Identificou pontos de conformidade e melhoria<br>
+    <input type="radio" id="realizado90" value="realizado90">Registrou evidências corretamente<br>
+    <input type="radio" id="realizado91" value="realizado91">Demonstrou postura ética e técnica<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura31" width="400" height="150"></canvas>
+    <button id="limpar-assinatura31">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura32" width="400" height="150"></canvas>
+    <button id="limpar-assinatura32">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Comunicação com Produção e Laboratório</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado17" value="realizado17">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado92" value="realizado92">Comunicou desvios com clareza e objetividade<br>
+    <input type="radio" id="realizado93" value="realizado93">Escutou e considerou retornos dos colegas<br>
+    <input type="radio" id="realizado94" value="realizado94">Usou termos técnicos corretamente<br>
+    <input type="radio" id="realizado95" value="realizado95">Demonstrou postura colaborativa<br>
+    <input type="radio" id="realizado96" value="realizado96">Evitou ruídos ou retrabalho por falhas de comunicação<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura33" width="400" height="150"></canvas>
+    <button id="limpar-assinatura33">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura34" width="400" height="150"></canvas>
+    <button id="limpar-assinatura34">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Avaliação Final de Aptidão</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado18" value="realizado18">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado97" value="realizado97">Demonstrou domínio das atividades<br>
+    <input type="radio" id="realizado98" value="realizado98">Executou tarefas com autonomia<br>
+    <input type="radio" id="realizado99" value="realizado99">Manteve organização<br>
+    <input type="radio" id="realizado100" value="realizado100">Respondeu bem a imprevistos<br>
+    <input type="radio" id="realizado101" value="realizado101">Está apto a atuar na função com confiança<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura35" width="400" height="150"></canvas>
+    <button id="limpar-assinatura35">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura36" width="400" height="150"></canvas>
+    <button id="limpar-assinatura36">Limpar</button>
+    </tbody>
+</details>
+</div>
+  </div>
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--perfil segundo funcionario-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+  <div class="caixa-perfil">
+    <h2>Perfil do Funcionário</h2>
+    <p><strong>Nome:</strong>Funcionário 2</p>
+    <p><strong>Matrícula:</strong>654321</p>
+    <p><strong>Cargo:</strong>Assistente de produção</p>
+    <p><strong>Setor:</strong>Produção</p>
+    <p><strong>Tempo de empresa:</strong>1 mês</p>
+
+    <div class="botoes-perfil">
+      <button onclick="mostrarSubAbaPerfil('conteudo-gabriel-treinamentos')">Treinamentos</button>
+    </div>
+
+    <div id="conteudo-gabriel-treinamentos" class="subconteudo-perfil">
+
+<details>
+    <summary><strong>Integração ao Setor e à Cultura da Empresa</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado19" value="realizado19">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado102" value="realizado102">Compreendeu a missão, visão e valores da empresa<br>
+    <input type="radio" id="realizado103" value="realizado103">Reconheceu a estrutura e a liderança do setor<br>
+    <input type="radio" id="realizado104" value="realizado104">Demonstrou interesse na equipe e função<br>
+    <input type="radio" id="realizado105" value="realizado105">Conhece os canais de comunicação<br>
+    <input type="radio" id="realizado106" value="realizado106">Compreendeu o papel da produção na empresa<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura37" width="400" height="150"></canvas>
+    <button id="limpar-assinatura37">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura38" width="400" height="150"></canvas>
+    <button id="limpar-assinatura38">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Boas Práticas de Fabricação(BPF)</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado20" value="realizado20">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado107" value="realizado107">Entendeu os fundamentos de BPF<br>
+    <input type="radio" id="realizado108" value="realizado108">Aplicou corretamente a higiene pessoal<br>
+    <input type="radio" id="realizado109" value="realizado109">Manteve ambiente limpo e organizado<br>
+    <input type="radio" id="realizado110" value="realizado110">Reconheceu riscos de contaminação<br>
+    <input type="radio" id="realizado111" value="realizado111">Seguiu rotinas de limpeza e sanitização<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura39" width="400" height="150"></canvas>
+    <button id="limpar-assinatura39">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura40" width="400" height="150"></canvas>
+    <button id="limpar-assinatura40">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Segurança no Ambiente de Produção</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado21" value="realizado21">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado112" value="realizado112">Identificou os riscos da área<br>
+    <input type="radio" id="realizado113" value="realizado113">Utilizou EPIs conforme instrução<br>
+    <input type="radio" id="realizado114" value="realizado114">Seguiu os procedimentos de segurança<br>
+    <input type="radio" id="realizado115" value="realizado115">Reportou situações de risco ao responsável<br>
+    <input type="radio" id="realizado116" value="realizado116">Compreendeu o protocolo de acidentes<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura41" width="400" height="150"></canvas>
+    <button id="limpar-assinatura41">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura42" width="400" height="150"></canvas>
+    <button id="limpar-assinatura42">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Uso de EPIs</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado22" value="realizado22">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado117" value="realizado117">Selecionou e utilizou EPIs adequados<br>
+    <input type="radio" id="realizado118" value="realizado118">Higienizou e armazenou corretamente os EPIs<br>
+    <input type="radio" id="realizado119" value="realizado119">Usou os EPIs durante todo o expediente<br>
+    <input type="radio" id="realizado120" value="realizado120">Reportou EPIs danificados<br>
+    <input type="radio" id="realizado121" value="realizado121">Reconheceu a importância do uso contínuo<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura43" width="400" height="150"></canvas>
+    <button id="limpar-assinatura43">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura44" width="400" height="150"></canvas>
+    <button id="limpar-assinatura44">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Etapas do Processo Produtivo</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado23" value="realizado23">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado122" value="realizado122">Reconheceu todas as fases do processo produtivo<br>
+    <input type="radio" id="realizado123" value="realizado123">Entendeu seu papel na cadeia de produção<br>
+    <input type="radio" id="realizado124" value="realizado124">Identificou produtos e matérias-primas<br>
+    <input type="radio" id="realizado125" value="realizado125">Observou o fluxo do produto e informações<br>
+    <input type="radio" id="realizado126" value="realizado126">relacionou o processo à qualidade<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura45" width="400" height="150"></canvas>
+    <button id="limpar-assinatura45">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura46" width="400" height="150"></canvas>
+    <button id="limpar-assinatura46">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Operação Básica de Equipamentos</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado24" value="realizado24">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado127" value="realizado127">Identificou o funcionamento do equipamento<br>
+    <input type="radio" id="realizado128" value="realizado128">Operou conforme instruções recebidas<br>
+    <input type="radio" id="realizado129" value="realizado129">Seguiu as rotinas de inicialização e parada<br>
+    <input type="radio" id="realizado130" value="realizado130">Relatou falhas e anomalias<br>
+    <input type="radio" id="realizado131" value="realizado131">Demonstrou atenção durante a operação<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura47" width="400" height="150"></canvas>
+    <button id="limpar-assinatura47">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura48" width="400" height="150"></canvas>
+    <button id="limpar-assinatura48">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Controle Visual de Qualidade</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado25" value="realizado25">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado132" value="realizado132">Seguiu instruções de manuseio<br>
+    <input type="radio" id="realizado133" value="realizado133">Utilizou carrinhos e paletes com cuidade<br>
+    <input type="radio" id="realizado134" value="realizado134">Armazenou conforme layout e padrões<br>
+    <input type="radio" id="realizado135" value="realizado135">Evitou contaminações e danos<br>
+    <input type="radio" id="realizado136" value="realizado136">Entendeu riscos de movimentações inseguras<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura49" width="400" height="150"></canvas>
+    <button id="limpar-assinatura49">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura50" width="400" height="150"></canvas>
+    <button id="limpar-assinatura50">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Registro de ocorrências Simples</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado26" value="realizado26">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado137" value="realizado137">Preencheu formulários com clareza<br>
+    <input type="radio" id="realizado138" value="realizado138">Utilizou letra legível e sem rasuras<br>
+    <input type="radio" id="realizado139" value="realizado139">Seguiu orientações para registros básicos<br>
+    <input type="radio" id="realizado140" value="realizado140">Reportou desvios do processo<br>
+    <input type="radio" id="realizado141" value="realizado141">Entendeu a importância dos registros<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura51" width="400" height="150"></canvas>
+    <button id="limpar-assinatura51">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura52" width="400" height="150"></canvas>
+    <button id="limpar-assinatura52">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Limpeza e Organização do Posto de Trabalho</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado27" value="realizado27">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado142" value="realizado142">Executou limpeza periódica e correta<br>
+    <input type="radio" id="realizado143" value="realizado143">Manteve ferramentas organizadas<br>
+    <input type="radio" id="realizado144" value="realizado144">Seguiu plano de limpeza da área<br>
+    <input type="radio" id="realizado145" value="realizado145">Reconheceu a importância da organização<br>
+    <input type="radio" id="realizado146" value="realizado146">Contribuiu para ambiente seguro<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura53" width="400" height="150"></canvas>
+    <button id="limpar-assinatura53">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura54" width="400" height="150"></canvas>
+    <button id="limpar-assinatura54">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Abastecimento de Linha</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado28" value="realizado28">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado147" value="realizado147">Seguiu critérios de FIFO<br>
+    <input type="radio" id="realizado148" value="realizado148">Abasteceu conforme sequência e ritmo<br>
+    <input type="radio" id="realizado149" value="realizado149">Evitou desperdícios e paradas<br>
+    <input type="radio" id="realizado150" value="realizado150">Garantiu presença de insumos<br>
+    <input type="radio" id="realizado151" value="realizado151">Manteve comunicação com operador líder<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura55" width="400" height="150"></canvas>
+    <button id="limpar-assinatura55">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura56" width="400" height="150"></canvas>
+    <button id="limpar-assinatura56">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Troca Simples de Ferramentas ou Acessórios</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado29" value="realizado29">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado152" value="realizado152">Identificou o tipo de ferramenta<br>
+    <input type="radio" id="realizado153" value="realizado153">Executou troca com segurança<br>
+    <input type="radio" id="realizado154" value="realizado154">Seguiu procedimentos operacionais<br>
+    <input type="radio" id="realizado155" value="realizado155">Relatou falhas ao superior<br>
+    <input type="radio" id="realizado156" value="realizado156">Utilizou ferramentas corretas<br><p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura57" width="400" height="150"></canvas>
+    <button id="limpar-assinatura57">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura58" width="400" height="150"></canvas>
+    <button id="limpar-assinatura58">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Descarte de Resíduos e Produtos Não Conformes</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado30" value="realizado30">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado157" value="realizado157">Conheceu os tipos de resíduos<br>
+    <input type="radio" id="realizado158" value="realizado158">Separou corretamente os materiais<br>
+    <input type="radio" id="realizado159" value="realizado159">Utilizou os coletores apropriados<br>
+    <input type="radio" id="realizado160" value="realizado160">Reportou excesso ou vazamentos<br>
+    <input type="radio" id="realizado161" value="realizado161">Entendeu impactos do descarte inadequado<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura59" width="400" height="150"></canvas>
+    <button id="limpar-assinatura59">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura60" width="400" height="150"></canvas>
+    <button id="limpar-assinatura60">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Postura e Comportamento no Ambiente Industrial</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado31" value="realizado31">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado162" value="realizado162">Demonstrou pontualidade e disciplina<br>
+    <input type="radio" id="realizado163" value="realizado163">Manteve respeito com colegas e líderes<br>
+    <input type="radio" id="realizado164" value="realizado164">Evitou distrações e brincadeiras perigosas<br>
+    <input type="radio" id="realizado165" value="realizado165">Adotou comportamento ético<br>
+    <input type="radio" id="realizado166" value="realizado166">Contribuiu com ambiente harmonioso<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura61" width="400" height="150"></canvas>
+    <button id="limpar-assinatura61">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura62" width="400" height="150"></canvas>
+    <button id="limpar-assinatura62">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Comunicação com Equipe e Liderança</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado32" value="realizado32">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado167" value="realizado167">Recebeu e passou instruções com calreza<br>
+    <input type="radio" id="realizado168" value="realizado168">Usou linguagem apropriada<br>
+    <input type="radio" id="realizado169" value="realizado169">Escutou e seguiu orientações<br>
+    <input type="radio" id="realizado170" value="realizado170">Relatou problemas com objetividade<br>
+    <input type="radio" id="realizado171" value="realizado171">Demonstrou colaboração e respeito<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura63" width="400" height="150"></canvas>
+    <button id="limpar-assinatura63">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura63" width="400" height="150"></canvas>
+    <button id="limpar-assinatura63">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Acompanhamento de Rotinas de Manutenção</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado33" value="realizado33">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado172" value="realizado172">Reconheceu sinais de desgaste<br>
+    <input type="radio" id="realizado173" value="realizado173">Avisou preventinamente a manutenção<br>
+    <input type="radio" id="realizado174" value="realizado174">Evitou intervenções indevidas<br>
+    <input type="radio" id="realizado175" value="realizado175">Acompanhou técnicos em manutenção<br>
+    <input type="radio" id="realizado176" value="realizado176">Entendeu o impacto da manutenção preventiva<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura64" width="400" height="150"></canvas>
+    <button id="limpar-assinatura64">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura65" width="400" height="150"></canvas>
+    <button id="limpar-assinatura65">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Trabalho em Equipe e Cooperação</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado34" value="realizado34">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado177" value="realizado177">Ajudou colegas quando necessário<br>
+    <input type="radio" id="realizado178" value="realizado178">Participou das rotinas de grupo<br>
+    <input type="radio" id="realizado179" value="realizado179">Evitou conflitos e respeitou diferenças<br>
+    <input type="radio" id="realizado180" value="realizado180">Compartilhou informações úteis<br>
+    <input type="radio" id="realizado181" value="realizado181">Demonstrou espírito colaborativo<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura66" width="400" height="150"></canvas>
+    <button id="limpar-assinatura66">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura67" width="400" height="150"></canvas>
+    <button id="limpar-assinatura67">Limpar</button>
+    </tbody>
+</details>
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<details>
+    <summary><strong>Avaliação Final de Aptidão</strong></summary>
+        
+    <td>Funcionário:<input text="" id="nomefuncionario" placeholder="Nome do colaborador"></td>
+    <td>Matrícula:<input text="" id="matricula" placeholder="Matrícula do funcionário"></td>
+    <p></p>
+    <td>Supervisor responsável:<input text="" id="supervisor" placeholder="Nome do supervisor do treinamento"></td>
+    <p></p>
+    <td>Data da realização:<input type="date" id="datarealizacao"></td>
+    <td>Duração Estimada:<input text="" id="duracao" size="1"></td>Horas<input type="duracao" id="duracao" size="1">Minutos
+    <p></p>
+    <td>Status do Treinamento:</td>
+    <p></p>
+    <input type="radio" id="realizado35" value="realizado35">Realizado com sucesso<input type="radio" id="andamento1" value="andamento1">Em andamento<input type="radio" id="naorealizado1" value="naorealizado1">Não realizado (Motivo:)<input text="" id="naorealizado" placeholder="Motivo do treinamento não ter sido realizado" size="34">
+    <p></p>
+    <td>Observações do Supervisor:</td><br>
+    <textarea id="observacoessup" name="observacoessup" maxlength="1000" rows="6" cols="60" style="resize: vertical; width: 500px;"></textarea>
+    <p></p>
+    <td>Pontos observados:</td><br>
+    <input type="radio" id="realizado182" value="realizado182">Executou as tarefas com autonomia<br>
+    <input type="radio" id="realizado183" value="realizado183">Demonstrou conhecimento técnico adequado<br>
+    <input type="radio" id="realizado184" value="realizado184">Manteve conformidade e segurança<br>
+    <input type="radio" id="realizado185" value="realizado185">Respondeu bem a imprevistos<br>
+    <input type="radio" id="realizado186" value="realizado186">Está apto para atuar na função com confiança<br>
+    <p></p>
+    <td>Recomendações adicionais</td><br>
+    <textarea id="recomendacoesssup" name="recomendacoessup" maxlength="1000" rows="5" cols="50" style="resize: vertical; width: 400px;"></textarea>
+    <p></p>
+    <tbody>
+    <strong><em>Assinatura do Funcionário:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura68" width="400" height="150"></canvas>
+    <button id="limpar-assinatura68">Limpar</button>
+    </tbody>
+    <br>
+    <tbody>
+    <strong><em>Assinatura do Tutor/Supervisor:</em></strong></p><input type="date" id="dataassinatura"><br>
+    <canvas id="assinatura69" width="400" height="150"></canvas>
+    <button id="limpar-assinatura69">Limpar</button>
+    </tbody>
+</details>
+</div>
+  </div>
+</div>
+        </div>
+
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+<!----->
+
+    <div id="treinamentos-funcionario" class="subconteudo" style="display:none">
+        
+         <div class="caixa-perfil">
+         <h2>Perfil do Funcionário</h2>
+            <p><strong>Nome:</strong>Funcionário 1</p>
+            <p><strong>Matrícula:</strong>123456</p>
+            <p><strong>Cargo:</strong>Supervisor de qualidade fabril</p>
+            <p><strong>Setor:</strong>Controle de qualidade</p>
+            <p><strong>Tempo de empresa:</strong>3 meses</p>
+
+
+    <div class="botoes-perfil">
+    <div class="par-botoes">
+        <button onclick="abrirModal(`
+
+       
+        <div id='sem1' class='semana-conteudo'>
+            <h3>Integração ao Setor e à Cultura da Empresa</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Apresentação formal do Funcionário a empresa, tour pela instituição e integração com a equipe.
+                </span>
+            </span>
+
+            <input type='radio' id='feito1' name='integracao' value='feito'>
+            <label for='feito1'>Feito</label>
+
+            <input type='radio' id='naofeito1' name='tarefa1' value='nao-feito'>
+            <label for='naofeito1'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+
+            <h3>Boas práticas de fabricação</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conhecimento dos nossos princípios, crenças e comportamentos que guiam as ações e decisões da empresa, promovendo um ambiente alinhado e colaborativo. Também conhecimento da nossa missão, visão e valores.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito2' name='cultura' value='feito'>
+            <label for='feito2'>Feito</label>
+
+            <input type='radio' id='naofeito2' name='tarefa1' value='nao-feito'>
+            <label for='naofeito2'>Não Feito</label>
+            <p></p>
+            <input textarea='' id='descricao' placeholder='Pergunte ao funcionário sua opinião...'>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+
+            <h3>Segurança no Ambiente de Produção</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Breves aulas sobre regras e procedimentos que visam proteger a saúde e a integridade física do trabalhador durante a realização de suas atividades.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito3' name='normasseg' value='feito'>
+            <label for='feito3'>Feito</label>
+
+            <input type='radio' id='naofeito3' name='tarefa1' value='nao-feito'>
+            <label for='naofeito3'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+            
+            <h3>Uso de EPIs</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conjunto de diretrizes que asseguram a higiene, a padronização e a qualidade na produção de alimentos e nossos outros produtos.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito4' name='bpf' value='feito'>
+            <label for='feito4'>Feito</label>
+
+            <input type='radio' id='naofeito4' name='tarefa1' value='nao-feito'>
+            <label for='naofeito4'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+        
+            
+        <h3>Conhecimento dos Produtos e Fluxo de Produção</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Apresentação formal do Funcionário a empresa, tour pela instituição e integração com a equipe.
+                </span>
+            </span>
+
+            <input type='radio' id='feito1' name='integracao' value='feito'>
+            <label for='feito1'>Feito</label>
+
+            <input type='radio' id='naofeito1' name='tarefa1' value='nao-feito'>
+            <label for='naofeito1'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+
+            <h3>Introdução aos Registros de Qualidade</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conhecimento dos nossos princípios, crenças e comportamentos que guiam as ações e decisões da empresa, promovendo um ambiente alinhado e colaborativo. Também conhecimento da nossa missão, visão e valores.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito2' name='cultura' value='feito'>
+            <label for='feito2'>Feito</label>
+
+            <input type='radio' id='naofeito2' name='tarefa1' value='nao-feito'>
+            <label for='naofeito2'>Não Feito</label>
+            <p></p>
+            <input textarea='' id='descricao' placeholder='Pergunte ao funcionário sua opinião...'>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+            <h4>Gráfico de Desempenho Final da Semana 1</h4>
+            <canvas id='graficoFinalSemana1' width='600' height='400'></canvas>
+            </div>
+            </div>
+        </div>
+
+       `)">Treino 1° mês</button>
+<!----->
+<!----->
+<!----->
+<!----->
+<!--2 mes-->
+<!----->
+<!----->
+<!----->
+<!----->
+<button onclick="abrirModal(`
+<div id='sem' class='semana-conteudo'>
+            <h3>Controle de Qualidade no Recebimento de Matéria-prima</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Apresentação formal do Funcionário a empresa, tour pela instituição e integração com a equipe.
+                </span>
+            </span>
+
+            <input type='radio' id='feito1' name='integracao' value='feito'>
+            <label for='feito1'>Feito</label>
+
+            <input type='radio' id='naofeito1' name='tarefa1' value='nao-feito'>
+            <label for='naofeito1'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+
+            <h3>Coleta de Amostras e Envio ao Laboratório</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conhecimento dos nossos princípios, crenças e comportamentos que guiam as ações e decisões da empresa, promovendo um ambiente alinhado e colaborativo. Também conhecimento da nossa missão, visão e valores.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito2' name='cultura' value='feito'>
+            <label for='feito2'>Feito</label>
+
+            <input type='radio' id='naofeito2' name='tarefa1' value='nao-feito'>
+            <label for='naofeito2'>Não Feito</label>
+            <p></p>
+            <input textarea='' id='descricao' placeholder='Pergunte ao funcionário sua opinião...'>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+
+            <h3>Acompanhamento de Processos Críticos(pH, temperatura, etc)</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Breves aulas sobre regras e procedimentos que visam proteger a saúde e a integridade física do trabalhador durante a realização de suas atividades.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito3' name='normasseg' value='feito'>
+            <label for='feito3'>Feito</label>
+
+            <input type='radio' id='naofeito3' name='tarefa1' value='nao-feito'>
+            <label for='naofeito3'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+            
+            <h3>Verificação de Procedimentos Operacionais Padrão(POPs)</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conjunto de diretrizes que asseguram a higiene, a padronização e a qualidade na produção de alimentos e nossos outros produtos.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito4' name='bpf' value='feito'>
+            <label for='feito4'>Feito</label>
+
+            <input type='radio' id='naofeito4' name='tarefa1' value='nao-feito'>
+            <label for='naofeito4'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+            <h3>Preenchimento de Registros e Planilhas de Controle</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Breves aulas sobre regras e procedimentos que visam proteger a saúde e a integridade física do trabalhador durante a realização de suas atividades.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito3' name='normasseg' value='feito'>
+            <label for='feito3'>Feito</label>
+
+            <input type='radio' id='naofeito3' name='tarefa1' value='nao-feito'>
+            <label for='naofeito3'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+            
+            <h3>Conceito de Rastreabilidade</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conjunto de diretrizes que asseguram a higiene, a padronização e a qualidade na produção de alimentos e nossos outros produtos.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito4' name='bpf' value='feito'>
+            <label for='feito4'>Feito</label>
+
+            <input type='radio' id='naofeito4' name='tarefa1' value='nao-feito'>
+            <label for='naofeito4'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+        
+            <h4>Gráfico de Desempenho Final da Semana 1</h4>
+            <canvas id='graficoFinalSemana1' width='600' height='400'></canvas>
+            </div>
+            </div>
+        </div>
+       `)">Treino 2° mês</button>
+<!----->
+<!----->
+<!----->
+<!----->
+<!--3 mes-->
+<!----->
+<!----->
+<!----->
+<!----->
+<button onclick="abrirModal(`
+<div id='sem' class='semana-conteudo'>
+            <h3>Identificação de Não-Conformidades</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Apresentação formal do Funcionário a empresa, tour pela instituição e integração com a equipe.
+                </span>
+            </span>
+
+            <input type='radio' id='feito1' name='integracao' value='feito'>
+            <label for='feito1'>Feito</label>
+
+            <input type='radio' id='naofeito1' name='tarefa1' value='nao-feito'>
+            <label for='naofeito1'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+
+            <h3>Abertura de Relatório de Não-Conformidade(RNC)</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conhecimento dos nossos princípios, crenças e comportamentos que guiam as ações e decisões da empresa, promovendo um ambiente alinhado e colaborativo. Também conhecimento da nossa missão, visão e valores.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito2' name='cultura' value='feito'>
+            <label for='feito2'>Feito</label>
+
+            <input type='radio' id='naofeito2' name='tarefa1' value='nao-feito'>
+            <label for='naofeito2'>Não Feito</label>
+            <p></p>
+            <input textarea='' id='descricao' placeholder='Pergunte ao funcionário sua opinião...'>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+
+            <h3>Plano de Ação Corretiva e Preventiva(CAPA)</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Breves aulas sobre regras e procedimentos que visam proteger a saúde e a integridade física do trabalhador durante a realização de suas atividades.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito3' name='normasseg' value='feito'>
+            <label for='feito3'>Feito</label>
+
+            <input type='radio' id='naofeito3' name='tarefa1' value='nao-feito'>
+            <label for='naofeito3'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+            
+            <h3>Auditorias Internas(simulações)</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conjunto de diretrizes que asseguram a higiene, a padronização e a qualidade na produção de alimentos e nossos outros produtos.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito4' name='bpf' value='feito'>
+            <label for='feito4'>Feito</label>
+
+            <input type='radio' id='naofeito4' name='tarefa1' value='nao-feito'>
+            <label for='naofeito4'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+            <h3>Comunicação com Produção e Laboratório</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Breves aulas sobre regras e procedimentos que visam proteger a saúde e a integridade física do trabalhador durante a realização de suas atividades.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito3' name='normasseg' value='feito'>
+            <label for='feito3'>Feito</label>
+
+            <input type='radio' id='naofeito3' name='tarefa1' value='nao-feito'>
+            <label for='naofeito3'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+            <h4>Gráfico de Desempenho Final da Semana 1</h4>
+            <canvas id='graficoFinalSemana1' width='600' height='400'></canvas>
+            </div>
+            </div>
+        </div>
+       `)">Treino 3° mês</button>
+    </div>
+    </div>
+         </div>
+<!----->
+<!----->
+<!----->
+<!----->
+<!--2 funcionario-->
+<!----->
+<!----->
+<!----->
+<!----->
+    
+   
+         <div class="caixa-perfil">
+         <h2>Perfil do Funcionário</h2>
+            <p><strong>Nome:</strong>Funcionário 2</p>
+            <p><strong>Matrícula:</strong>654321</p>
+            <p><strong>Cargo:</strong>Assistente de produção</p>
+            <p><strong>Setor:</strong>Produção</p>
+            <p><strong>Tempo de empresa:</strong>3 meses</p>
+
+    <div id="conteudo-fun2-treinamentos" class="subconteudo" style="display:none"></div>
+    <div class="botoes-perfil">
+    <div class="par-botoes">
+        <button onclick="abrirModal(`
+
+       
+        <div id='sem1' class='semana-conteudo'>
+            <h3>Integração ao Setor e à Cultura da Empresa</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Apresentação formal do Funcionário a empresa, tour pela instituição e integração com a equipe.
+                </span>
+            </span>
+
+            <input type='radio' id='feito1' name='integracao' value='feito'>
+            <label for='feito1'>Feito</label>
+
+            <input type='radio' id='naofeito1' name='tarefa1' value='nao-feito'>
+            <label for='naofeito1'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+
+            <h3>Boas práticas de fabricação(BPF)</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conhecimento dos nossos princípios, crenças e comportamentos que guiam as ações e decisões da empresa, promovendo um ambiente alinhado e colaborativo. Também conhecimento da nossa missão, visão e valores.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito2' name='cultura' value='feito'>
+            <label for='feito2'>Feito</label>
+
+            <input type='radio' id='naofeito2' name='tarefa1' value='nao-feito'>
+            <label for='naofeito2'>Não Feito</label>
+            <p></p>
+            <input textarea='' id='descricao' placeholder='Pergunte ao funcionário sua opinião...'>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+
+            <h3>Segurança no Ambiente de Produção</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Breves aulas sobre regras e procedimentos que visam proteger a saúde e a integridade física do trabalhador durante a realização de suas atividades.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito3' name='normasseg' value='feito'>
+            <label for='feito3'>Feito</label>
+
+            <input type='radio' id='naofeito3' name='tarefa1' value='nao-feito'>
+            <label for='naofeito3'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+            
+            <h3>Uso de EPIs</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conjunto de diretrizes que asseguram a higiene, a padronização e a qualidade na produção de alimentos e nossos outros produtos.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito4' name='bpf' value='feito'>
+            <label for='feito4'>Feito</label>
+
+            <input type='radio' id='naofeito4' name='tarefa1' value='nao-feito'>
+            <label for='naofeito4'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+        
+            
+        <h3>Etapas do Processo Produtivo</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Apresentação formal do Funcionário a empresa, tour pela instituição e integração com a equipe.
+                </span>
+            </span>
+
+            <input type='radio' id='feito1' name='integracao' value='feito'>
+            <label for='feito1'>Feito</label>
+
+            <input type='radio' id='naofeito1' name='tarefa1' value='nao-feito'>
+            <label for='naofeito1'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+
+            <h3>Operação Básica de Equipamentos</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conhecimento dos nossos princípios, crenças e comportamentos que guiam as ações e decisões da empresa, promovendo um ambiente alinhado e colaborativo. Também conhecimento da nossa missão, visão e valores.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito2' name='cultura' value='feito'>
+            <label for='feito2'>Feito</label>
+
+            <input type='radio' id='naofeito2' name='tarefa1' value='nao-feito'>
+            <label for='naofeito2'>Não Feito</label>
+            <p></p>
+            <input textarea='' id='descricao' placeholder='Pergunte ao funcionário sua opinião...'>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+            <h4>Gráfico de Desempenho Final da Semana 1</h4>
+            <canvas id='graficoFinalSemana1' width='600' height='400'></canvas>
+            </div>
+            </div>
+        </div>
+
+       `)">Treino 1° mês</button>
+<!----->
+<!----->
+<!----->
+<!----->
+<!--2 mes-->
+<!----->
+<!----->
+<!----->
+<!----->
+<button onclick="abrirModal(`
+<div id='sem' class='semana-conteudo'>
+            <h3>Controle Visual de Qualidade</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Apresentação formal do Funcionário a empresa, tour pela instituição e integração com a equipe.
+                </span>
+            </span>
+
+            <input type='radio' id='feito1' name='integracao' value='feito'>
+            <label for='feito1'>Feito</label>
+
+            <input type='radio' id='naofeito1' name='tarefa1' value='nao-feito'>
+            <label for='naofeito1'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+
+            <h3>Manipulação e Armazenamento de Materiais</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conhecimento dos nossos princípios, crenças e comportamentos que guiam as ações e decisões da empresa, promovendo um ambiente alinhado e colaborativo. Também conhecimento da nossa missão, visão e valores.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito2' name='cultura' value='feito'>
+            <label for='feito2'>Feito</label>
+
+            <input type='radio' id='naofeito2' name='tarefa1' value='nao-feito'>
+            <label for='naofeito2'>Não Feito</label>
+            <p></p>
+            <input textarea='' id='descricao' placeholder='Pergunte ao funcionário sua opinião...'>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+
+            <h3>Registro de Ocorrências Simples</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Breves aulas sobre regras e procedimentos que visam proteger a saúde e a integridade física do trabalhador durante a realização de suas atividades.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito3' name='normasseg' value='feito'>
+            <label for='feito3'>Feito</label>
+
+            <input type='radio' id='naofeito3' name='tarefa1' value='nao-feito'>
+            <label for='naofeito3'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+            
+            <h3>Limpeza e Organização do Posto de Trabalho</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conjunto de diretrizes que asseguram a higiene, a padronização e a qualidade na produção de alimentos e nossos outros produtos.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito4' name='bpf' value='feito'>
+            <label for='feito4'>Feito</label>
+
+            <input type='radio' id='naofeito4' name='tarefa1' value='nao-feito'>
+            <label for='naofeito4'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+            <h3>Abastecimento de Linha</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Breves aulas sobre regras e procedimentos que visam proteger a saúde e a integridade física do trabalhador durante a realização de suas atividades.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito3' name='normasseg' value='feito'>
+            <label for='feito3'>Feito</label>
+
+            <input type='radio' id='naofeito3' name='tarefa1' value='nao-feito'>
+            <label for='naofeito3'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+            
+            <h3>Troca Simples de Ferramentas ou Acessórios</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conjunto de diretrizes que asseguram a higiene, a padronização e a qualidade na produção de alimentos e nossos outros produtos.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito4' name='bpf' value='feito'>
+            <label for='feito4'>Feito</label>
+
+            <input type='radio' id='naofeito4' name='tarefa1' value='nao-feito'>
+            <label for='naofeito4'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+        
+            <h4>Gráfico de Desempenho Final da Semana 1</h4>
+            <canvas id='graficoFinalSemana1' width='600' height='400'></canvas>
+            </div>
+            </div>
+        </div>
+       `)">Treino 2° mês</button>
+<!----->
+<!----->
+<!----->
+<!----->
+<!--3 mes-->
+<!----->
+<!----->
+<!----->
+<!----->
+<button onclick="abrirModal(`
+<div id='sem' class='semana-conteudo'>
+            <h3>Descarte de Resíduos e Produtos Não Conformes</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Apresentação formal do Funcionário a empresa, tour pela instituição e integração com a equipe.
+                </span>
+            </span>
+
+            <input type='radio' id='feito1' name='integracao' value='feito'>
+            <label for='feito1'>Feito</label>
+
+            <input type='radio' id='naofeito1' name='tarefa1' value='nao-feito'>
+            <label for='naofeito1'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+
+            <h3>Postura e Comportamento no Ambiente Industrial</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conhecimento dos nossos princípios, crenças e comportamentos que guiam as ações e decisões da empresa, promovendo um ambiente alinhado e colaborativo. Também conhecimento da nossa missão, visão e valores.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito2' name='cultura' value='feito'>
+            <label for='feito2'>Feito</label>
+
+            <input type='radio' id='naofeito2' name='tarefa1' value='nao-feito'>
+            <label for='naofeito2'>Não Feito</label>
+            <p></p>
+            <input textarea='' id='descricao' placeholder='Pergunte ao funcionário sua opinião...'>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+
+            <h3>Comunicação com Equipe e Liderança</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Breves aulas sobre regras e procedimentos que visam proteger a saúde e a integridade física do trabalhador durante a realização de suas atividades.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito3' name='normasseg' value='feito'>
+            <label for='feito3'>Feito</label>
+
+            <input type='radio' id='naofeito3' name='tarefa1' value='nao-feito'>
+            <label for='naofeito3'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+            
+            <h3>Acompanhamento de Rotinas de Manutenção</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Conjunto de diretrizes que asseguram a higiene, a padronização e a qualidade na produção de alimentos e nossos outros produtos.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito4' name='bpf' value='feito'>
+            <label for='feito4'>Feito</label>
+
+            <input type='radio' id='naofeito4' name='tarefa1' value='nao-feito'>
+            <label for='naofeito4'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+            <h3>Trabalho em Equipe e Cooperação</h3>
+            <span class='tooltip'>🛈
+                <span class='tooltiptext'>
+                Breves aulas sobre regras e procedimentos que visam proteger a saúde e a integridade física do trabalhador durante a realização de suas atividades.
+                </span>
+            </span>
+            
+            <input type='radio' id='feito3' name='normasseg' value='feito'>
+            <label for='feito3'>Feito</label>
+
+            <input type='radio' id='naofeito3' name='tarefa1' value='nao-feito'>
+            <label for='naofeito3'>Não Feito</label>
+            <p></p>
+            <label>Desempenho:</label>
+            <div class='estrelas' data-tipo='desempenho'></div>
+            <label>Desenvolvimento:</label>
+            <div class='estrelas' data-tipo='desenvolvimento'></div>
+
+            <h4>Gráfico de Desempenho Final da Semana 1</h4>
+            <canvas id='graficoFinalSemana1' width='600' height='400'></canvas>
+            </div>
+            </div>
+        </div>
+       `)">Treino 3° mês</button>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    
+
+
+<!-- Adicionar no final do body, antes do script -->
+<div id="modalTreino" class="modal">
+  <div class="modal-conteudo">
+    <span class="modal-fechar" onclick="fecharModal()">&times;</span>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+
+<div id="documentos" class="subconteudo" style="display: none;">
+      <h2>📁 Documentação dos Funcionários</h2>
+      <label for="selecaoFuncionario"><strong>Selecionar Funcionário:</strong></label>
+      <select id="selecaoFuncionario" onchange="trocarFuncionario()">
+        <option value="func1">Funcionário 1</option>
+        <option value="func2">Funcionário 2</option>
+      </select>
+
+      <div id="conteudo-func1" class="conteudo-funcionario" style="margin-top: 20px; display: block;">
+        <h3>📄 Documentos do Funcionário 1</h3>
+        <p><h3>🔐 Documentos Pessoais e RH</h3>
+    <ul class="lista-documentos">
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>📎 Contrato de Trabalho</span> <button onclick="abrirUpload('Contrato de Trabalho', 'upload-contrato-func2')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <form id="form-contrato-func2">
+      <div><label>Nome:</label><input type="text" required></div>
+      <div><label>Cargo:</label><input type="text" required></div>
+      <div><label>Data de Início:</label><input type="date" required></div>
+      <button type="submit">Salvar</button>
+    </form>
+    <div id="upload-contrato-func2" class="visualizacao-arquivo"></div>
+  </div>
+</details>
+
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>📎 Termo de Confidencialidade</span> <button onclick="abrirUpload('Termo de Confidencialidade', 'upload-termo-func2')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <form id="form-termo-func2">
+      <div><label>Nome:</label><input type="text" required></div>
+      <div><label>Setor:</label><input type="text"></div>
+      <div><label>Declaro que estou ciente das políticas de sigilo da empresa.</label></div>
+      <button type="submit">Assinar Termo</button>
+    </form>
+    <div id="upload-termo-func2" class="visualizacao-arquivo"></div>
+  </div>
+</details>
+
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>📎 Ficha de Registro do Empregado</span> <button onclick="abrirUpload('Ficha de Registro', 'upload-ficha-func2')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <form id="form-ficha-func2">
+      <div><label>Nome:</label><input type="text"></div>
+      <div><label>Data de nascimento:</label><input type="date"></div>
+      <div><label>Endereço:</label><input type="text"></div>
+      <div><label>Telefone:</label><input type="text"></div>
+      <div><label>E-mail:</label><input type="email"></div>
+      <button type="submit">Salvar Registro</button>
+    </form>
+    <div id="upload-ficha-func2" class="visualizacao-arquivo"></div>
+  </div>
+</details>
+
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>📎 Declaração de Dependentes para IR</span> <button onclick="abrirUpload('Declaração IR', 'upload-ir-func2')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <form id="form-ir-func2">
+      <div><label>Nome do Funcionário:</label><input type="text"></div>
+      <div><label>Dependente 1:</label><input type="text"></div>
+      <div><label>Parentesco:</label><input type="text"></div>
+      <div><label>Dependente 2:</label><input type="text"></div>
+      <div><label>Parentesco:</label><input type="text"></div>
+      <button type="submit">Salvar Declaração</button>
+    </form>
+    <div id="upload-ir-func2" class="visualizacao-arquivo"></div>
+  </div>
+</details>
+
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>📎 Atestado Médico / Odontológico</span> <button onclick="abrirUpload('Atestado Médico', 'upload-atestado-func2')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <form id="form-atestado-func2">
+      <div><label>Nome do Funcionário:</label><input type="text"></div>
+      <div><label>Motivo:</label><input type="text"></div>
+      <div><label>Data do Atestado:</label><input type="date"></div>
+      <div><label>Quantidade de Dias:</label><input type="number" min="1"></div>
+      <button type="submit">Registrar Atestado</button>
+    </form>
+    <div id="upload-atestado-func2" class="visualizacao-arquivo"></div>
+  </div>
+</details>
+
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>📎 Comprovante de Residência</span> <button onclick="abrirUpload('Comprovante de Residência', 'upload-residencia-func2')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <form id="form-residencia-func2">
+      <div><label>Nome:</label><input type="text"></div>
+      <div><label>Endereço Completo:</label><input type="text"></div>
+      <div><label>Data do Documento:</label><input type="date"></div>
+      <button type="submit">Confirmar</button>
+    </form>
+    <div id="upload-residencia-func2" class="visualizacao-arquivo"></div>
+  </div>
+</details>
+
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>📎 Cópia de RG, CPF e Carteira de Trabalho</span> <button onclick="abrirUpload('Documentos de Identidade', 'upload-documentos-func2')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <form id="form-documentos-func2">
+      <div><label>Nome:</label><input type="text"></div>
+      <div><label>Número do RG:</label><input type="text"></div>
+      <div><label>Número do CPF:</label><input type="text"></div>
+      <div><label>Número da CTPS:</label><input type="text"></div>
+      <button type="submit">Salvar Dados</button>
+    </form>
+    <div id="upload-documentos-func2" class="visualizacao-arquivo"></div>
+  </div>
+</details>
+    
+
+
+
+
+    <div id="documentos" class="tela" style="display:none"></div>
+    <h3>🏢 Documentos Institucionais</h3>
+    <ul>
+        <li><a href="https://api.mziq.com/mzfilemanager/v2/d/fcf0301a-c792-45d6-a615-fc81722c9abe/11a83eab-a798-8411-d89d-0f33572b96c5?origin=2" target="_blank">Código de Conduta</a></li>
+        <li><a href="https://mdiasbranco.com.br/wp-content/uploads/2023/06/Manual-do-Prestador-de-Servicos-da-M.-Dias-Branco_Atualizado.pdf" target="_blank">Manual do Colaborador</a></li>
+        <li><a href="https://mdiasbranco.portaldeassinaturas.com.br/Site/politicaprivacidade" target="_blank">Política de Segurança da Informação</a></li>
+        <li><a href="https://api.mziq.com/mzfilemanager/v2/d/fcf0301a-c792-45d6-a615-fc81722c9abe/8d9c8fd3-6ffe-d609-9f87-0120f8a76318?origin=2" target="_blank">Regulamento Interno da Produção</a></li>
+        <li><a href="https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/inspecao-do-trabalho/seguranca-e-saude-no-trabalho/ctpp-nrs/normas-regulamentadoras-nrs" target="_blank">Normas de Segurança e Uso de EPIs</a></li>
+        <li><a href="https://ri.mdiasbranco.com.br/a-companhia/sustentabilidade/" target="_blank">Plano de Sustentabilidade</a></li>
+        <li><a href="https://mdiasbranco.com.br/privacidade/" target="_blank">Política de LGPD (Proteção de Dados)</a></li>
+    </ul>
+
+    
+
+
+    <h3>🎁 Documentos de Benefícios</h3>
+    <details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>🍛 Ticket Alimentação/Refeição</span> <button onclick="abrirUpload('Ticket Alimentação', 'upload-ticket-func2')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <div id="upload-ticket-func2" class="visualizacao-arquivo">
+      <img src="imagens/ticket_alimentacao.jpg" alt="Ticket Alimentação" style="max-width:100%;">
+    </div>
+  </div>
+</details>
+
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>🩺 Plano de Saúde – Guia de Uso</span> <button onclick="abrirUpload('Plano de Saúde', 'upload-saude-func2')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <div id="upload-saude-func2" class="visualizacao-arquivo">
+      <img src="imagens/plano_saude.jpg" alt="Plano de Saúde" style="max-width:100%;">
+    </div>
+  </div>
+</details>
+
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>🚌 Vale Transporte – Política de Solicitação</span> <button onclick="abrirUpload('Vale Transporte', 'upload-vale-func2')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <div id="upload-vale-func2" class="visualizacao-arquivo">
+      <img src="imagens/vale_transporte.jpg" alt="Vale Transporte" style="max-width:100%;">
+    </div>
+  </div>
+</details>
+        </p>
+      </div>
+    
+</div>
+    
+
+      <div id="conteudo-func2" class="conteudo-funcionario" style="margin-top: 20px; display: none;">
+        <h3>📄 Documentos do Funcionário 2</h3>
+        <p><h3>🔐 Documentos Pessoais e RH</h3>
+    <ul class="lista-documentos">
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>📎 Contrato de Trabalho</span> <button onclick="abrirUpload('Contrato de Trabalho', 'upload-contrato')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <form id="form-contrato">
+      <div><label>Nome:</label><input type="text" required></div>
+      <div><label>Cargo:</label><input type="text" required></div>
+      <div><label>Data de Início:</label><input type="date" required></div>
+      <button type="submit">Salvar</button>
+    </form>
+    <div id="upload-contrato" class="visualizacao-arquivo"></div>
+  </div>
+</details>
+
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>📎 Termo de Confidencialidade</span> <button onclick="abrirUpload('Termo de Confidencialidade', 'upload-termo')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <form id="form-termo">
+      <div><label>Nome:</label><input type="text" required></div>
+      <div><label>Setor:</label><input type="text"></div>
+      <div><label>Declaro que estou ciente das políticas de sigilo da empresa.</label></div>
+      <button type="submit">Assinar Termo</button>
+    </form>
+    <div id="upload-termo" class="visualizacao-arquivo"></div>
+  </div>
+</details>
+
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>📎 Ficha de Registro do Empregado</span> <button onclick="abrirUpload('Ficha de Registro', 'upload-ficha')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <form id="form-ficha">
+      <div><label>Nome:</label><input type="text"></div>
+      <div><label>Data de nascimento:</label><input type="date"></div>
+      <div><label>Endereço:</label><input type="text"></div>
+      <div><label>Telefone:</label><input type="text"></div>
+      <div><label>E-mail:</label><input type="email"></div>
+      <button type="submit">Salvar Registro</button>
+    </form>
+    <div id="upload-ficha" class="visualizacao-arquivo"></div>
+  </div>
+</details>
+
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>📎 Declaração de Dependentes para IR</span> <button onclick="abrirUpload('Declaração IR', 'upload-ir')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <form id="form-ir">
+      <div><label>Nome do Funcionário:</label><input type="text"></div>
+      <div><label>Dependente 1:</label><input type="text"></div>
+      <div><label>Parentesco:</label><input type="text"></div>
+      <div><label>Dependente 2:</label><input type="text"></div>
+      <div><label>Parentesco:</label><input type="text"></div>
+      <button type="submit">Salvar Declaração</button>
+    </form>
+    <div id="upload-ir" class="visualizacao-arquivo"></div>
+  </div>
+</details>
+
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>📎 Atestado Médico / Odontológico</span> <button onclick="abrirUpload('Atestado Médico', 'upload-atestado')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <form id="form-atestado">
+      <div><label>Nome do Funcionário:</label><input type="text"></div>
+      <div><label>Motivo:</label><input type="text"></div>
+      <div><label>Data do Atestado:</label><input type="date"></div>
+      <div><label>Quantidade de Dias:</label><input type="number" min="1"></div>
+      <button type="submit">Registrar Atestado</button>
+    </form>
+    <div id="upload-atestado" class="visualizacao-arquivo"></div>
+  </div>
+</details>
+
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>📎 Comprovante de Residência</span> <button onclick="abrirUpload('Comprovante de Residência', 'upload-residencia')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <form id="form-residencia">
+      <div><label>Nome:</label><input type="text"></div>
+      <div><label>Endereço Completo:</label><input type="text"></div>
+      <div><label>Data do Documento:</label><input type="date"></div>
+      <button type="submit">Confirmar</button>
+    </form>
+    <div id="upload-residencia" class="visualizacao-arquivo"></div>
+  </div>
+</details>
+
+<details class="bloco-documento">
+  <summary><div style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><span>📎 Cópia de RG, CPF e Carteira de Trabalho</span> <button onclick="abrirUpload('Documentos de Identidade', 'upload-documentos')">📤 Enviar</button></div></summary>
+  <div class="area-documento">
+    <form id="form-documentos">
+      <div><label>Nome:</label><input type="text"></div>
+      <div><label>Número do RG:</label><input type="text"></div>
+      <div><label>Número do CPF:</label><input type="text"></div>
+      <div><label>Número da CTPS:</label><input type="text"></div>
+      <button type="submit">Salvar Dados</button>
+    </form>
+    <div id="upload-documentos" class="visualizacao-arquivo"></div>
+  </div>
+</details>
+    
+
+
+
+
+    <div id="documentos" class="tela" style="display:none"></div>
+    <h3>🏢 Documentos Institucionais</h3>
+    <ul>
+        <li><a href="https://api.mziq.com/mzfilemanager/v2/d/fcf0301a-c792-45d6-a615-fc81722c9abe/11a83eab-a798-8411-d89d-0f33572b96c5?origin=2" target="_blank">Código de Conduta</a></li>
+        <li><a href="https://mdiasbranco.com.br/wp-content/uploads/2023/06/Manual-do-Prestador-de-Servicos-da-M.-Dias-Branco_Atualizado.pdf" target="_blank">Manual do Colaborador</a></li>
+        <li><a href="https://mdiasbranco.portaldeassinaturas.com.br/Site/politicaprivacidade" target="_blank">Política de Segurança da Informação</a></li>
+        <li><a href="https://api.mziq.com/mzfilemanager/v2/d/fcf0301a-c792-45d6-a615-fc81722c9abe/8d9c8fd3-6ffe-d609-9f87-0120f8a76318?origin=2" target="_blank">Regulamento Interno da Produção</a></li>
+        <li><a href="https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/inspecao-do-trabalho/seguranca-e-saude-no-trabalho/ctpp-nrs/normas-regulamentadoras-nrs" target="_blank">Normas de Segurança e Uso de EPIs</a></li>
+        <li><a href="https://ri.mdiasbranco.com.br/a-companhia/sustentabilidade/" target="_blank">Plano de Sustentabilidade</a></li>
+        <li><a href="https://mdiasbranco.com.br/privacidade/" target="_blank">Política de LGPD (Proteção de Dados)</a></li>
+    </ul>
+
+    
+
+
+    <h3>🎁 Documentos de Benefícios</h3>
+
+<details class="bloco-documento">
+  <summary>
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <span>🍛 Ticket Alimentação/Refeição</span>
+    </div>
+  </summary>
+  <div class="area-documento">
+    <td>Nome:<input type="" class="nomefuncionario" placeholder="Nome do Funcionário"></td>
+    <br>
+    <td>Matrícula:<input type="" class="campo-preenchimento" placeholder="Digite sua matrícula">
+    <br>
+    <label>
+    <input type="radio" name="beneficio" value="alimentacao">
+    100% TICKET ALIMENTAÇÃO ELETRÔNICO - TAE
+    </label>
+    <br>
+    <label>
+    <input type="radio" name="beneficio" value="refeicao">
+    100% TICKET REFEIÇÃO ELETRÔNICO - TAE
+    </label>
+    <br>
+    <h2>AUTORIZAÇÃO DE DESCONTO</h2>
+    <td>Autorizo o desconto mensal em minha folha de pagamento do valor limite de até (20%) do PAT sobre o total de tickets recebidos e a cobrança da taxa de emissão de segunda via do cartão Refeição/Alimentação em caso de perda, dano ou extravio</td>
+    <br>
+    <br>
+    <td>Data:<input type="date" id="data"></td>
+    <input type="file">
+    <br><br>
+    <img src="imagens/ticket_alimentacao.jpg" alt="Ticket Alimentação" style="max-width:100%;"><br>
+  </div>
+</details>
+
+
+
+
+
+</div>
+
+
+
+
+<!-- Modal de Cadastro de Funcionário -->
+<div id="modalFuncionario" class="modal">
+  <div class="modal-funcionario">
+    <span class="modal-fechar" onclick="fecharModalFuncionario()">&times;</span>
+    <h2>Cadastrar Novo Funcionário</h2>
+    <div class="form-suporte">
+      <div class="form-group">
+        <label for="cadastro-nomefuncionario">Nome:</label>
+        <input type="text" id="cadastro-nomefuncionario" name="nome">
+      </div>
+      <div class="form-group">
+        <label for="cadastro-matricula">Matrícula:</label>
+        <input type="text" id="cadastro-matricula" name="matricula">
+      </div>
+      <div class="form-group">
+        <label for="cadastro-cargo">Cargo:</label>
+        <input type="text" id="cadastro-cargo" name="cargo">
+      </div>
+      <button onclick="cadastrarFuncionario()" class="btn-cadastrar">Cadastrar</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal WhatsApp -->
+<div id="modalWhatsapp" class="modal">
+  <div class="modal-conteudo">
+    <span class="modal-fechar" onclick="fecharModalWhatsapp()">&times;</span>
+    <h3>Enviar alerta de atraso</h3>
+    <input type="text" id="numeroWhatsapp" placeholder="Digite o número com DDD (ex: 5599999999999)">
+    <button onclick="enviarWhatsApp()">Enviar WhatsApp</button>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<script>
+function abrirWhatsappBot() {
+  const telefone = '5521966074357'; // Coloque o número real aqui
+  const mensagem = '⚠️ Olá! Você tem treinamentos pendentes. Atualize sua rotina, caso já tenha feito os treinamentos ignore a mensagem.';
+  const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+  window.open(url, '_blank');
+}
+</script>
+
+<script>
+function fecharModalWhatsapp() {
+  document.getElementById('modalWhatsapp').style.display = 'none';
+}
+
+function enviarWhatsApp() {
+  const numero = document.getElementById("numeroWhatsapp").value.trim();
+
+  if (!numero.match(/^\d{12,13}$/)) {
+    alert("Número inválido. Use DDD + número, ex: 5599999999999");
+    return;
+  }
+
+  fetch("https://api.z-api.io/instances/3E42D3A0097E11D7F412BE7C53096139/token/A44D1BC460145A193B1DDAAE/send-messages", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      phone: numero,
+      message: "⚠️ Olá! Seu treinamento está atrasado. Regularize o quanto antes!"
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert("Mensagem enviada com sucesso!");
+    fecharModalWhatsapp();
+    console.log(data);
+  })
+  .catch(err => {
+    alert("Erro ao enviar mensagem");
+    console.error(err);
+  });
+}
+</script>
+</script>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "h8RPLs_WU5wBdQWFy",
+      });
+   })();
+</script>
+
+<script src="scriptfun.js"></script>
+<script src="assinatura.js"></script>
+</body>
+</html>
